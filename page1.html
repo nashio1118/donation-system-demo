@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本情報入力</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- ヘッダー -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">基本情報入力</h1>
+            <p class="text-gray-600">全国大会出場クラブチーム支援</p>
+        </header>
+
+        <!-- フォーム -->
+        <form id="basicInfoForm" class="bg-white rounded-lg shadow-lg p-6">
+            <!-- 基本情報セクション -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">基本情報</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="grade" class="block text-sm font-medium text-gray-700 mb-1">学年 *</label>
+                        <input type="text" id="grade" name="grade" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="例：小学6年生">
+                    </div>
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">名前 *</label>
+                        <input type="text" id="name" name="name" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="例：田中太郎">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">兄弟</label>
+                        <div class="flex items-center space-x-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="hasSibling" class="mr-2">
+                                <span class="text-sm">兄弟がいる</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="transferDate" class="block text-sm font-medium text-gray-700 mb-1">振込日 *</label>
+                        <input type="date" id="transferDate" name="transferDate" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 振込金額セクション -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">振込金額</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="transferAmount" class="block text-sm font-medium text-gray-700 mb-1">振込金額 *</label>
+                        <input type="number" id="transferAmount" name="transferAmount" min="0" step="100" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="0">
+                    </div>
+                    <div>
+                        <label for="directTransferAmount" class="block text-sm font-medium text-gray-700 mb-1">直接振込金額</label>
+                        <input type="number" id="directTransferAmount" name="directTransferAmount" min="0" step="100"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="0">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 内訳セクション -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">振込金額の内訳</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="donationAmount" class="block text-sm font-medium text-gray-700 mb-1">寄付金 *</label>
+                        <input type="number" id="donationAmount" name="donationAmount" min="0" step="100" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">負担金40000円</label>
+                        <div class="flex items-center space-x-4">
+                            <label class="flex items-center">
+                                <input type="radio" name="burdenFee" value="1" class="mr-2">
+                                <span class="text-sm">1人分</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="burdenFee" value="2" class="mr-2">
+                                <span class="text-sm">2人分</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="burdenFee" value="0" class="mr-2">
+                                <span class="text-sm">なし</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="tshirtAmount" class="block text-sm font-medium text-gray-700 mb-1">Tシャツ代</label>
+                        <input type="number" id="tshirtAmount" name="tshirtAmount" min="0" step="100"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="0">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">奨励会負担金（1000円）</label>
+                        <div class="flex items-center space-x-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="hasEncouragementFee" class="mr-2">
+                                <span class="text-sm">あり</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 合計確認セクション -->
+            <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                <div class="text-center">
+                    <p class="text-sm text-gray-600">内訳合計</p>
+                    <p id="totalBreakdown" class="text-2xl font-bold text-green-600">¥0</p>
+                </div>
+            </div>
+
+            <!-- 送信ボタン -->
+            <div class="text-center">
+                <button type="submit" 
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-medium transition-colors">
+                    次へ進む（奉加帳入力）
+                </button>
+            </div>
+        </form>
+
+        <!-- ローディング表示 -->
+        <div id="loading" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-6 text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                <p class="text-gray-700">処理中...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/page1.js"></script>
+    <script src="js/demo.js"></script>
+</body>
+</html> 
